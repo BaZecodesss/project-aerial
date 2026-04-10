@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Aerial</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:'Orbitron',sans-serif;background:black;color:white;overflow-x:hidden}
+
+/* BACKGROUND + PARALLAX */
+.hero-bg{
+ position:fixed;top:0;left:0;width:110%;height:110%;
+ background:url('images/desert-bg.webp') center/cover no-repeat;
+ z-index:-2;transition:transform 0.2s ease;
+}
+
+.overlay{
+ position:fixed;width:100%;height:100%;
+ background:linear-gradient(to bottom,rgba(0,0,0,0.6),rgba(0,0,0,0.95));
+ z-index:-1;
+}
+
+/* PARTICLES */
+.particles{position:fixed;width:100%;height:100%;pointer-events:none;z-index:-1}
+.particle{
+ position:absolute;width:3px;height:3px;background:#f4a261;border-radius:50%;opacity:0.4;
+ animation:float linear infinite;
+}
+@keyframes float{from{transform:translateY(0)}to{transform:translateY(-100vh)}}
+
+/* NAV */
+header{
+ position:sticky;top:0;
+ backdrop-filter:blur(12px);
+ background:rgba(0,0,0,0.6);
+ padding:15px;text-align:center;font-size:2rem;
+ border-bottom:1px solid rgba(255,255,255,0.1);
+}
+nav{display:flex;justify-content:center;gap:30px;margin-top:10px}
+nav a{color:#f4a261;text-decoration:none;font-weight:bold;cursor:pointer;transition:0.3s}
+nav a:hover{color:white;transform:scale(1.1)}
+
+/* PAGES */
+.page{display:none;padding:60px 20px;max-width:1100px;margin:auto;animation:fade 0.4s ease}
+.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+
+/* HERO */
+.hero{text-align:center;padding:150px 20px}
+.hero h1{font-size:4rem;margin:0}
+.hero p{opacity:0.8;font-size:1.3rem}
+
+.button{
+ margin-top:30px;padding:15px 40px;
+ background:linear-gradient(45deg,#e76f51,#f4a261);
+ border-radius:12px;color:white;text-decoration:none;
+ display:inline-block;transition:0.3s;
+ box-shadow:0 0 20px rgba(255,150,0,0.3);
+}
+.button:hover{transform:scale(1.07);box-shadow:0 0 30px rgba(255,150,0,0.6)}
+
+/* CARDS */
+.card{
+ background:rgba(255,255,255,0.05);
+ backdrop-filter:blur(12px);
+ padding:25px;border-radius:15px;margin-bottom:25px;
+ border:1px solid rgba(255,255,255,0.1);
+ transition:0.3s;
+}
+.card:hover{transform:translateY(-5px);box-shadow:0 0 20px rgba(255,255,255,0.1)}
+
+h2{color:#ffd166}
+img{width:100%;border-radius:10px;margin-top:15px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+
+/* STATUS */
+.status{margin-top:20px;padding:12px;background:rgba(0,255,100,0.15);border-radius:10px}
+
+/* SOCIALS */
+.socials a{
+ display:inline-block;margin:10px;padding:12px 18px;
+ background:#e76f51;border-radius:10px;color:white;text-decoration:none;
+ transition:0.3s;
+}
+.socials a:hover{background:#f4a261;transform:scale(1.1)}
+
+footer{text-align:center;padding:20px;background:rgba(0,0,0,0.8)}
+</style>
+</head>
+
+<body>
+
+<div class="hero-bg" id="bg"></div>
+<div class="overlay"></div>
+<div class="particles" id="particles"></div>
+
+<header>
+ Project Aerial
+ <nav>
+  <a onclick="showPage('home')">Home</a>
+  <a onclick="showPage('about')">About</a>
+  <a onclick="showPage('news')">News</a>
+  <a onclick="showPage('updates')">Updates</a>
+  <a onclick="showPage('socials')">Socials</a>
+ </nav>
+</header>
+
+<!-- HOME -->
+<div id="home" class="page active">
+ <div class="hero">
+  <h1>PROJECT AERIAL</h1>
+  <p>OG Fortnite • Chapter 1 Season 5</p>
+  <a class="button">Download Launcher</a>
+  <div class="status">● Servers: ONLINE (NA & EU)</div>
+ </div>
+</div>
+
+<!-- ABOUT -->
+<div id="about" class="page">
+ <div class="card">
+  <h2>About</h2>
+  <p>Project Aerial recreates the full Season 5 experience with desert biomes, OG mechanics, and smooth gameplay.</p>
+  <div class="grid">
+   <div>
+    <p>✔ NA & EU Servers</p>
+    <p>✔ Anti-Cheat</p>
+    <p>✔ Weekly Updates</p>
+   </div>
+   <img src="images/season5-map.webp">
+  </div>
+ </div>
+</div>
+
+<!-- NEWS -->
+<div id="news" class="page">
+ <div class="card">
+  <h2>News</h2>
+  <p>🚀 Project Aerial is launching soon.</p>
+  <p>🌍 Servers confirmed for NA & EU.</p>
+  <img src="images/season5-skins.webp">
+ </div>
+</div>
+
+<!-- UPDATES -->
+<div id="updates" class="page">
+ <div class="card">
+  <h2>Updates</h2>
+  <p>v0.1 - Project Started</p>
+  <p>v0.2 - Anti-Cheat System</p>
+  <img src="images/meteor.webp">
+ </div>
+</div>
+
+<!-- SOCIALS -->
+<div id="socials" class="page">
+ <div class="card">
+  <h2>Socials</h2>
+  <div class="socials">
+   <a href="#">YouTube</a>
+   <a href="#">TikTok</a>
+   <a href="#">Discord</a>
+  </div>
+ </div>
+</div>
+
+<footer>© 2026 Project Aerial</footer>
+
+<script>
+function showPage(pageId){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.getElementById(pageId).classList.add('active');
+}
+
+/* PARALLAX */
+document.addEventListener('mousemove',e=>{
+ let x=(e.clientX/window.innerWidth-0.5)*20;
+ let y=(e.clientY/window.innerHeight-0.5)*20;
+ document.getElementById('bg').style.transform=`translate(${x}px,${y}px)`;
+});
+
+/* PARTICLES GENERATOR */
+const container=document.getElementById('particles');
+for(let i=0;i<40;i++){
+ let p=document.createElement('div');
+ p.className='particle';
+ p.style.left=Math.random()*100+'%';
+ p.style.top=Math.random()*100+'%';
+ p.style.animationDuration=(5+Math.random()*10)+'s';
+ container.appendChild(p);
+}
+</script>
+
+</body>
+</html>
